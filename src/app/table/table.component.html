@@ -4,9 +4,40 @@
     <td>Почта</td>
     <td>Адрес</td>
   </tr>
-  <tr *ngFor="let user of users">
+  <tr>
+    <td>
+      <mat-form-field appearance="fill">
+        <mat-label>Имя</mat-label>
+        <mat-select multiple (selectionChange)="filter($event.value)">
+          <mat-option *ngFor="let user of users" [value]="user.name">
+            {{ user.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </td>
+    <td><mat-form-field appearance="fill">
+      <mat-label>Почта</mat-label>
+      <mat-select multiple (selectionChange)="filter($event.value)">
+        <mat-option *ngFor="let user of users" [value]="user.email">
+          {{ user.email }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+    <td><mat-form-field appearance="fill">
+      <mat-label>Адрес</mat-label>
+      <mat-select multiple (selectionChange)="filter($event.value)">
+        <mat-option *ngFor="let user of users" [value]="user.address">
+          {{ user.address }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field></td>
+  </tr>
+
+  <tr *ngFor="let user of filteredUsers">
     <td>{{ user.name }}</td>
     <td>{{ user.email }}</td>
-    <td><a [href]="user.geoLink">{{ user.address }}</a></td>
+    <td>
+      <a [href]="user.geoLink">{{ user.address }}</a>
+    </td>
   </tr>
 </table>
