@@ -1,0 +1,12 @@
+<table>
+  <tr>
+    <td>Имя</td>
+    <td>Почта</td>
+    <td>Адрес</td>
+  </tr>
+  <tr *ngFor="let user of users">
+    <td>{{ user.name }}</td>
+    <td>{{ user.email }}</td>
+    <td><a [href]="user.geoLink">{{ user.address }}</a></td>
+  </tr>
+</table>
